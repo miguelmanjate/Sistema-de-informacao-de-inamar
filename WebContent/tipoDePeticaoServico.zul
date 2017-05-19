@@ -1,0 +1,58 @@
+<?page title="Tipo de Peticao Servico" contentType="text/html;charset=UTF-8"?>
+<zk>
+	<window title="Tipo de Peticao Servico" border="normal"
+		apply="mz.com.ciuem.controller.TipoDePeticaoServicoController">
+		<panel>
+			<panelchildren>
+				<grid>
+					<rows>
+						<row>
+							<label value="Descricao :" />
+							<textbox id="descricao" />
+						</row>
+						<row>
+							<label value="Valor :" />
+							<textbox id="valor" />
+						</row>
+						<row>
+							<label value="Estado de Ativacao" />
+							<radiogroup>
+								<radio label="Sim" id="radioSim" />
+								<radio label="Nao" id="radioNao" />
+							</radiogroup>
+						</row>
+						<row>
+					    <label value="Servico" />
+							<hbox>
+								<combobox id="cbxServico"></combobox>
+								<button label="Pesquisar" id="btnPesquisar" />
+							</hbox>
+						</row>
+						<row>
+							<hbox></hbox>
+							<hbox>
+								<button label="Cancelar"
+									id="btnCancelar" />
+								<button label="Gravar" id="btnGravar" />
+								<button label="listar" id="btnListar" />
+							</hbox>
+						</row>
+						<row></row>
+						<row></row>
+					</rows>
+				</grid>
+			</panelchildren>
+		</panel>
+		<separator />
+		<listbox id="lbxPeticaoServico">
+			<listhead>
+				<listheader label="Descricao" sort="auto" />
+				<listheader label="Valor" sort="auto" />
+				<listheader label="Activo" sort="auto" />
+				<listheader label="Peticao" sort="auto" />
+				<listheader label="Servico" sort="auto" />
+			</listhead>
+		</listbox>
+
+	</window>
+</zk>

@@ -1,0 +1,16 @@
+<?page title="Formulario de Areas de Orgao" contentType="text/html;charset=UTF-8"?>
+<zk>
+<window title="Formulario de Areas de Orgao" border="normal"
+apply="mz.com.ciuem.controller.FormularioOrgaoAreasController">
+<listbox id ="lbxAreasOrgao" >
+	<listhead>
+		<listheader label="Descricao do Orgao" sort="auto" />
+		<listheader label="Local do Orgao" sort="auto" />
+		<listheader label="Conta do Orgao" sort="auto" />
+		<listheader label="Areas relacionadas" sort="auto" />
+	</listhead>
+
+</listbox>
+
+</window>
+</zk>

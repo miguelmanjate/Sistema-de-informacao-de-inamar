@@ -1,0 +1,57 @@
+<?page title="Orgao" contentType="text/html;charset=UTF-8"?>
+<zk>
+	<window title="Orgao" border="normal"
+		apply="mz.com.ciuem.controller.OrgaoController">
+		<panel>
+			<panelchildren>
+
+				<grid>
+
+					<rows>
+						<row>
+							<label value="Descricao" />
+							<textbox id="descricao" />
+						</row>
+						<row>
+							<label value="Local" />
+							<textbox id="local" />
+						</row>
+						<row>
+							<label value="Numero de Conta" />
+							<hbox>
+								<textbox id="numeroConta" />
+									<button label="Pesquisar" id="btnPesquisar" />
+							</hbox>
+						</row>
+						<row>
+							<hbox></hbox>
+							<hbox>
+								<button label="Cancel" id="btnCancel" />
+								<button label="Gravar" id="btnGravar" />
+								<button label="listar" id="btnListar" />
+								<button label="Listar Areas"
+									id="btnListarAreasOrgao" />
+							</hbox>
+
+						</row>
+					</rows>
+				</grid>
+			</panelchildren>
+		</panel>
+		<separator />
+		<panel>
+			<panelchildren>
+				<listbox id="lbxOrgao">
+					<listhead>
+						<listheader label="Descricao" sort="auto" />
+						<listheader label="Local" sort="auto" />
+						<listheader label="Conta" sort="auto" />
+					</listhead>
+				</listbox>
+			</panelchildren>
+		</panel>
+		<separator />
+		<div id="conteudoOrgao"></div>
+	</window>
+
+</zk>

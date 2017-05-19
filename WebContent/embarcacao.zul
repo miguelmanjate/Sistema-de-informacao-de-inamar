@@ -1,0 +1,78 @@
+<?page title=" EMBARCACAO " contentType="text/html;charset=UTF-8"?>
+<zk>
+	<window title=" EMBARCACAO " border="normal"
+	apply="mz.com.ciuem.controller.EmbarcacaoController">
+		<panel>
+			<panelchildren>
+				<grid>
+					<rows>
+						<row>
+							<label value="Nome"></label>
+							<textbox width="350px" id = "nome"></textbox>
+						</row>
+
+						<row>
+							<label value="Filho de"></label>
+							<textbox width="300px" id ="nomePai"></textbox>
+							<label value="e de"></label>
+							<textbox width="300px" id ="nomeMae"></textbox>
+						</row>
+						<row>
+							<label value="Data de nascimento"></label>
+							<datebox id = "dataNascimento" />
+						</row>
+						<row>
+							<label value="Bilhete de identidade"></label>
+							<textbox id ="bi"></textbox>
+							<label value="Data de emissao"></label>
+							<datebox id = "dataEmissao" />
+						</row>
+						<row>
+							<label value="Residente no Bairro"></label>
+							<textbox id ="bairro"></textbox>
+							<label value="Quarterao"></label>
+							<textbox width="70px" id ="quarterao"></textbox>
+
+						</row>
+						<row>
+							<label value="casa n"></label>
+							<textbox width="70px" id ="casa"></textbox>
+							<label value="telefone "></label>
+							<textbox id ="telefone" ></textbox>
+						</row>
+						<row>
+							<label value="Servico " id ="servico"></label>
+							<combobox>
+								<comboitem label="Cruzeiros" />
+								<comboitem label="Carga" />
+							</combobox>
+						</row>
+						<row>
+							<hbox></hbox>
+							<hbox></hbox>
+							<hbox>
+								<button label="Cancelar" id="btnCancelar"></button>
+								<button label="Gravar"
+									id="btnGravar">
+								</button>
+							</hbox>
+						</row>
+					</rows>
+				</grid>
+			</panelchildren>
+		</panel>
+		<separator />
+		<panel>
+			<panelchildren>
+				<listbox id ="lbxEmbarcacao" >
+					<listhead>
+						<listheader label="Nome " sort="auto" />
+						<listheader label="Servico" sort="auto" />
+						<listheader label="Servico" sort="auto" />
+					</listhead>
+				
+				</listbox>
+			</panelchildren>
+		</panel>
+	</window>
+</zk>

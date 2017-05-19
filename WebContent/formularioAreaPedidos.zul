@@ -1,0 +1,14 @@
+<?page title="Formulario de Pedidos de Area" contentType="text/html;charset=UTF-8"?>
+<zk>
+<window title="Formulario de Pedidos de Area" border="normal"
+apply="mz.com.ciuem.controller.FormularioAreaPedidos">
+<listbox id ="lbxPedidosArea" >
+	<listhead>
+		<listheader label="Codigo da Area" sort="auto" />
+		<listheader label="Descricao da Area" sort="auto" />
+		<listheader label="Orgao da Area" sort="auto" />
+		<listheader label="Pedidos da Area" sort="auto" />
+	</listhead>
+</listbox>
+</window>
+</zk>

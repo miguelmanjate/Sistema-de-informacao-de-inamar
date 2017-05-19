@@ -1,0 +1,16 @@
+<?page title="Formulario de Requisitos de Pedidos" contentType="text/html;charset=UTF-8"?>
+<zk>
+<window title="Formulario de Requisitos de Pedidos" border="normal"
+apply="mz.com.ciuem.controller.FormularioPeticaoRequisitoController">
+<listbox id="lbxRequisitosPeticao">
+					<listhead>
+						<listheader label="Codigo do Pedido" sort="auto" />
+						<listheader label="Descricao do Pedido" sort="auto" />
+						<listheader label="Estado do estrumento legal" sort="auto" />
+						<listheader label="Area do Pedido" sort="auto" />
+						<listheader label="Requisitos de Tipo de Peticao" sort="auto" />
+						<listheader label="Requisitos do Pedido" sort="auto" />
+					</listhead>
+				</listbox>
+</window>
+</zk>

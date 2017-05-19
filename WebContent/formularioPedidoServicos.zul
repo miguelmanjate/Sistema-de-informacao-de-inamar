@@ -1,0 +1,16 @@
+<?page title="Formularo de servicos de Pedido" contentType="text/html;charset=UTF-8"?>
+<zk>
+<window title="Formularo de servicos de Pedido" border="normal"
+apply="mz.com.ciuem.controller.FormularioPedidoServicoController">
+<listbox id="lbxServicosPeticao">
+					<listhead>
+						<listheader label="Codigo do Pedido" sort="auto" />
+						<listheader label="Descricao do Pedido" sort="auto" />
+						<listheader label="Estado do estrumento legal" sort="auto" />
+						<listheader label="Area do Pedido" sort="auto" />
+						<listheader label="Tipo de Peticao de servico" sort="auto" />
+						<listheader label="Servicos do Pedido" sort="auto" />
+					</listhead>
+				</listbox>
+</window>
+</zk>

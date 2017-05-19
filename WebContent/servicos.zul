@@ -1,0 +1,54 @@
+<?page title="Servicos" contentType="text/html;charset=UTF-8"?>
+<zk>
+	<window title="Servicos" border="normal"
+	apply="mz.com.ciuem.controller.ServicoController">
+		<panel>
+			<panelchildren>
+				<grid>
+					<columns>
+						<column label="" />
+						<column label="" />
+					</columns>
+					<rows>
+						<row>
+							<label value="Descricao :" />
+							<textbox id = "descricao" />
+						</row>
+						<row>
+							<label value="Estado de Ativacao :" />
+							<radiogroup id ="radioGroup" >
+								<radio label="Sim" id ="radioSim"/>
+								<radio label="Nao" id ="radioNao" />
+							</radiogroup>
+						</row>
+						<row>
+							<hbox></hbox>
+							<hbox>
+								<button label="Cancelar" id ="btnCancelar"/>
+								<button label="Gravar" id = "btnGravar"/>
+							</hbox>
+						</row>
+						<row>
+							<hbox></hbox>
+							<hbox>
+								<button label="Listar" id = "btnListar"/>
+								<button label="Pesquisar" id = "btnPesquisar"/>
+							</hbox>
+						</row>
+					</rows>
+				</grid>
+			</panelchildren>
+		</panel>
+		<separator />
+		<panel>
+			<panelchildren>
+				<listbox id = "lbxServico">
+					<listhead>
+						<listheader label="Descricao" sort="auto" />
+						<listheader label="Estado do Servico" sort="auto" />
+					</listhead>
+				</listbox>
+			</panelchildren>
+		</panel>
+	</window>
+</zk>

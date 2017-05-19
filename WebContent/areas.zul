@@ -1,0 +1,61 @@
+<?page title="Areas" contentType="text/html;charset=UTF-8"?>
+<zk>
+	<window title="Areas" border="normal"
+		apply="mz.com.ciuem.controller.AreaController">
+		<panel>
+			<panelchildren>
+				<grid>
+					<rows>
+						<row>
+							<label value="Codigo"></label>
+							<textbox id="codigoArea"></textbox>
+						</row>
+						<row>
+							<label value="Descricao"></label>
+							<textbox id="descricaoArea"></textbox>
+						</row>
+						<row>
+							<label value="Orgao"></label>
+							<hbox>
+								<combobox id="cbxOrgao" >
+								</combobox>
+								<button label="Pesquisar"
+									id="btnPesquisar" />
+							</hbox>
+						</row>
+						<row>
+							<hbox></hbox>
+							<hbox>
+								<button label="Cancelar"
+									id="btnCancelar" />
+								<button label="Gravar" id="btnGravar" />
+								<button label="Listar" id="btnListar" />
+							</hbox>
+						</row>
+						<row>
+							<hbox></hbox>
+							<hbox>
+								<button label="Listar Pedidos"
+									id="btnPedidosArea" />
+							</hbox>
+						</row>
+					</rows>
+				</grid>
+			</panelchildren>
+		</panel>
+		<separator />
+		<panel>
+			<panelchildren>
+				<listbox id="lbxArea">
+					<listhead>
+						<listheader label="Codigo" sort="auto" />
+						<listheader label="Descricao" sort="auto" />
+						<listheader label="Orgao" sort="auto" />
+					</listhead>
+				</listbox>
+			</panelchildren>
+		</panel>
+		<separator />
+		<div id="conteudoArea"></div>
+	</window>
+</zk>

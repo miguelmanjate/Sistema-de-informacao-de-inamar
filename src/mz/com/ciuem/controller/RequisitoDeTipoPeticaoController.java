@@ -1,6 +1,7 @@
 package mz.com.ciuem.controller;
 
 import java.util.List;
+import java.util.Set;
 
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.Executions;
@@ -27,12 +28,12 @@ public class RequisitoDeTipoPeticaoController extends GenericForwardComposer<Com
 	private Textbox descricao;
 	private Radio radioSim;
 	private Radio radioNao;
-	private Combobox cbxRequisito;
 	private Button btnPesquisar;
 	private Button btnCancelar;
 	private Button btnGravar;
 	private Button btnListar;
 	private Listbox lbxRequisitoPeticao;
+	private Listbox lbxRequisitos;
 
 	public void doAfterCompose(Component comp) throws Exception {
 		super.doAfterCompose(comp);
@@ -40,34 +41,49 @@ public class RequisitoDeTipoPeticaoController extends GenericForwardComposer<Com
 	}
 
 	public void priencherRequisito() {
-		
+
 		List<Requisito> requisitos = RequisitoDAO.listar();
 
 		for (Requisito r : requisitos) {
-			Comboitem item = new Comboitem();
-			item.setLabel(r.getDescricao());
+			Listitem item = new Listitem();
+
+			Listcell cell1 = new Listcell(r.getDescricao());
+			Listcell cell2 = new Listcell();
+
+			if (r.isEstado())
+				cell2.setLabel("Ativo");
+			else
+				cell2.setLabel("Desativo");
+
+			item.appendChild(cell1);
+			item.appendChild(cell2);
 			item.setValue(r);
-			cbxRequisito.appendChild(item);
+
+			lbxRequisitos.appendChild(item);
 		}
 	}
 
-	public Requisito onSelecte$cbxRequisito(Event e) {
-		if (cbxRequisito.getSelectedItem() != null)
-			return (Requisito) cbxRequisito.getSelectedItem().getValue();
-		else
-			return null;
-	}
+	// public Requisito onSelecte$cbxRequisito(Event e) {
+	// if (cbxRequisito.getSelectedItem() != null)
+	// return (Requisito) cbxRequisito.getSelectedItem().getValue();
+	// else
+	// return null;
+	// }
 
 	public void onClick$btnGravar(Event e) {
 
 		lbxRequisitoPeticao.getItems().clear();
+		Requisito r = null;
+		Set<Listitem> items = lbxRequisitos.getSelectedItems();
+		Peticao p = (Peticao) Executions.getCurrent().getDesktop().getSession().getAttribute("peticao");
+		
+	for (Listitem item : items) {
+			
+			r = (Requisito) item.getValue();
+		
 		RequisitoDeTipoPeticao rtp = new RequisitoDeTipoPeticao();
 
 		rtp.setDescricao(descricao.getValue());
-
-		Requisito r = onSelecte$cbxRequisito(e);
-		Peticao p = (Peticao) Executions.getCurrent().getDesktop().getSession().getAttribute("peticao");
-
 		if (radioSim.isChecked())
 			rtp.setEstado(true);
 		else if (radioNao.isChecked())
@@ -76,49 +92,55 @@ public class RequisitoDeTipoPeticaoController extends GenericForwardComposer<Com
 		rtp.setPeticao(p);
 		rtp.setRequisito(r);
         
-		if(rtp.isValid()){
-			if(radioSim.isChecked() || radioNao.isChecked()){
-				RequisitoDeTipoPeticaoDAO.adicionar(rtp);		
-				listar(rtp);
-				limpar();
-				Clients.showNotification("Configuracao do pedido efetuada com sucesso", "info", btnGravar, "center", 2000);
-			}else{
-				Clients.showNotification("Erro, determina o estado de ativacao!!!", "error", btnGravar, "center", 2000);
+			if (rtp.isValid()) {
+				if (radioSim.isChecked() || radioNao.isChecked()) {
+					RequisitoDeTipoPeticaoDAO.adicionar(rtp);
+					listar(rtp);
+					Clients.showNotification("Configuracao do pedido efetuada com sucesso", "info", btnGravar, "center",
+							2000);
+				} else {
+					Clients.showNotification("Erro, determina o estado de ativacao!!!", "error", btnGravar, "center",
+							2000);
+				}
+			} else {
+				Clients.showNotification("Erro na configuracao do Pedido, dados em falta ", "error", btnGravar,
+						"center", 2000);
 			}
-		}else{
-			Clients.showNotification("Erro na configuracao do Pedido, dados em falta ", "error", btnGravar, "center",
-					2000);
 		}
+	limpar();
 	}
-	public void onClick$btnListar(Event e){
+
+	public void onClick$btnListar(Event e) {
 		lbxRequisitoPeticao.getItems().clear();
-		
+
 		List<RequisitoDeTipoPeticao> rtps = RequisitoDeTipoPeticaoDAO.listar();
-		for(RequisitoDeTipoPeticao r : rtps ){
+		for (RequisitoDeTipoPeticao r : rtps) {
 			listar(r);
 		}
 	}
-	
-	public void onClick$btnCancelar(Event e){
+
+	public void onClick$btnCancelar(Event e) {
 		lbxRequisitoPeticao.getItems().clear();
 		limpar();
 	}
-	public void onClick$btnPesquisar(Event e){
+
+	public void onClick$btnPesquisar(Event e) {
 		lbxRequisitoPeticao.getItems().clear();
-		
-		if(!descricao.getValue().isEmpty()){
-		List<RequisitoDeTipoPeticao> rtps = RequisitoDeTipoPeticaoDAO.getBayDescricao(descricao.getValue());
-		
-		for(RequisitoDeTipoPeticao r : rtps){
-			listar(r);
-		}
-		}else{
+
+		if (!descricao.getValue().isEmpty()) {
+			List<RequisitoDeTipoPeticao> rtps = RequisitoDeTipoPeticaoDAO.getBayDescricao(descricao.getValue());
+
+			for (RequisitoDeTipoPeticao r : rtps) {
+				listar(r);
+			}
+		} else {
 			Clients.showNotification("Erro introdusa uma informacao para pesquisa", "error", btnPesquisar, "center",
 					2000);
 		}
 	}
-	public void listar(RequisitoDeTipoPeticao rtp){
-		
+
+	public void listar(RequisitoDeTipoPeticao rtp) {
+
 		Listitem item = new Listitem();
 
 		Listcell lcell1 = new Listcell(rtp.getDescricao());
@@ -135,14 +157,15 @@ public class RequisitoDeTipoPeticaoController extends GenericForwardComposer<Com
 		item.appendChild(lcell2);
 		item.appendChild(lcell3);
 		item.appendChild(lcell4);
-	
+
 		item.setValue(rtp);
 		lbxRequisitoPeticao.appendChild(item);
 	}
-	public void limpar(){
+
+	public void limpar() {
 		descricao.setRawValue(null);
 		radioSim.setChecked(false);
 		radioNao.setChecked(false);
-		cbxRequisito.setRawValue(null);
+		lbxRequisitos.getSelectedItems().clear();
 	}
 }

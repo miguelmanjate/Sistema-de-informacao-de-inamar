@@ -1,0 +1,49 @@
+<?page title="Cadastro de Usuario" contentType="text/html;charset=UTF-8"?>
+<zk>
+	<window 
+	apply="mz.com.ciuem.controller.UsuarioCadastro" width="450px" height="250px">
+		<grid>
+			<columns>
+				<column label="" />
+				<column label="" />
+			</columns>
+			<rows>
+				<row>
+					<label value="Nome :" />
+					<textbox id="txtNome" />
+				</row>
+				<row>
+					<label value="Email :" />
+					<textbox id="txtEmail" width="220px" />
+				</row>
+				<row>
+					<label value="Senha :" />
+					<textbox id="txtSenha" type="password" />
+				</row>
+				<row>
+					<hbox>
+						<label value="Perfil :" />
+					</hbox>
+					<hbox>
+						<radiogroup>
+							<radio label="Administrador" id="rdAdmin" />
+							<radio label="Operador" id="rdOpera" />
+							<radio label="Requerendo" id="rdReque" />
+						</radiogroup>
+					</hbox>
+				</row>
+				<row>
+					<hbox>
+					<button label="Voltar" id="btnVoltar" />
+					</hbox>
+					<hbox>
+					<button label="Gravar" id="btnGravar" />
+					<button label="Limpar" id="btnLimpar" />
+					</hbox>
+				</row>
+				<row></row>
+			</rows>
+		</grid>
+
+	</window>
+</zk>

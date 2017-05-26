@@ -1,0 +1,32 @@
+<?page title="Tela de Login " contentType="text/html;charset=UTF-8"?>
+<zk>
+	<window id = "usuarioLogin" title="Tela de Login"  border="normal" mode="modal" position="center" width="350px" height="250px" 
+	apply="mz.com.ciuem.controller.UsuarioLoginController">
+	
+	<image src="imagens/profile.jpg" width="80px" height="80px"  ></image>
+		<grid>
+			<columns>
+				<column label="" />
+			</columns>
+			<rows>
+				<row>
+					<hbox>
+						<label value="Login :" />
+						<textbox id="txtLogin" width="180px" constraint="no empty: campo obrigatorio"/>
+					</hbox>
+
+				</row>
+				<row>
+					<hbox>
+						<label value="Senha :" />
+						<textbox id="txtSenha" type="password" constraint="no empty: campo obrigatorio"/>
+					</hbox>
+				</row>
+				<row>
+				<button label="Login" id="btnLogin" />
+				</row>
+			</rows>
+		</grid>
+
+	</window>
+</zk>

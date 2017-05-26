@@ -1,0 +1,43 @@
+<?page title="Usuario" contentType="text/html;charset=UTF-8"?>
+<zk>
+	<window  width="800px"
+	apply="mz.com.ciuem.controller.UsuarioMenuController"
+	>
+		<panel>
+			<panelchildren>
+				<grid>
+					
+					<rows>
+						<row>
+							<hbox>
+								<textbox id="nomeUsuario" />
+								<button label="Pesquisar"
+									id="btnPesquisar" />
+							</hbox>
+						</row>
+						<row>
+						<hbox></hbox>
+						<hbox>
+						<button label="+ Novo Usuario" id="btnNovoUser" />
+						<button label="Listar Usuarios" id="btnListarUsuarios" />
+						</hbox>
+						</row>
+					</rows>
+				</grid>
+			</panelchildren>
+		</panel>
+		<separator />
+		<panel>
+			<panelchildren>
+                     <listbox id ="lbxUsuario">
+                     	<listhead>
+                     		<listheader label="Nome" sort="auto" />
+                     		<listheader label="Email" sort="auto" />
+                     		<listheader label="Perfil" sort="auto" />
+                     		<listheader label="Acao" sort="auto" />
+                     	</listhead>
+                     </listbox>
+			</panelchildren>
+		</panel>
+	</window>
+</zk>

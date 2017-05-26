@@ -9,6 +9,7 @@ import javax.persistence.NoResultException;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 
+import mz.com.ciuem.model.Orgao;
 import mz.com.ciuem.model.Peticao;
 
 public class PeticaoDAO {
@@ -43,7 +44,25 @@ public class PeticaoDAO {
 		Peticao p = manager.find(Peticao.class, id);
 		return p;
 	}
-
+	public static void remover(long id){
+		EntityManagerFactory fatory = Persistence.createEntityManagerFactory("inamarDAO");
+		EntityManager manager = fatory.createEntityManager();
+		
+		Peticao encotrada = manager.find(Peticao.class, id);
+		manager.getTransaction().begin();
+		manager.remove(encotrada);
+		manager.getTransaction().commit();
+		
+	}
+	public static void atualizar(Peticao peticao){
+		EntityManagerFactory fatory = Persistence.createEntityManagerFactory("inamarDAO");
+		EntityManager manager = fatory.createEntityManager();
+		
+		manager.getTransaction().begin();
+		manager.merge(peticao);
+		manager.getTransaction().commit();
+		manager.close();
+	}
 	public static Peticao getByCodigo(String codigo) throws NoResultException {
 
 		EntityManagerFactory factory = Persistence.createEntityManagerFactory("inamarDAO");

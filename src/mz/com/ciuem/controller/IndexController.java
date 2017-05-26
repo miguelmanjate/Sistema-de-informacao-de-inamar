@@ -4,8 +4,12 @@ import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.util.GenericForwardComposer;
+import org.zkoss.zul.Button;
 import org.zkoss.zul.Div;
+import org.zkoss.zul.Label;
 import org.zkoss.zul.Menuitem;
+
+import mz.com.ciuem.model.Usuario;
 
 public class IndexController extends GenericForwardComposer<Component> {
 
@@ -25,6 +29,38 @@ public class IndexController extends GenericForwardComposer<Component> {
 	private Menuitem pol;
 	private Menuitem orgao;
 	private Menuitem requisito;
+	private Menuitem idUsuarios;
+	private Label lblUsuarioLogado;
+	private Button btnSair;
+	
+	public void doAfterCompose(Component comp) throws Exception{
+		super.doAfterCompose(comp);
+		Usuario usuario = (Usuario) Executions.getCurrent().getDesktop().getSession().getAttribute("usuarioLogado");
+		
+		if(usuario != null){
+			lblUsuarioLogado.setValue(usuario.getLogin());
+			
+			//perfil(usuario.getPerfil());
+		}
+	}
+	
+	public void perfil(String perfil){
+		
+		if(perfil.trim().equalsIgnoreCase("Administrador")){
+			gestaoDePeticao.setVisible(false);
+			maritimos.setVisible(false);
+			empresas.setVisible(false);
+			vistorias.setVisible(false);
+			pagamentos.setVisible(false);
+			estatistica.setVisible(false);
+			infraEstrutura.setVisible(false);
+			implementacao.setVisible(false);
+			//alert(perfil);
+		}
+		
+		
+	}
+	
 
 	public void onClick$embarcacoes(Event e) {
 
@@ -46,6 +82,7 @@ public class IndexController extends GenericForwardComposer<Component> {
 		servico.setDisabled(false);
 		orgao.setDisabled(false);
 		requisito.setDisabled(false);
+		idUsuarios.setDisabled(false);
 		Executions.createComponents("embarcacao.zul", conteudo, null);
 
 	}
@@ -69,6 +106,7 @@ public class IndexController extends GenericForwardComposer<Component> {
 		servico.setDisabled(false);
 		orgao.setDisabled(false);
 		requisito.setDisabled(false);
+		idUsuarios.setDisabled(false);
 		Executions.createComponents("areas.zul", conteudo, null);
 	}
 
@@ -91,6 +129,7 @@ public class IndexController extends GenericForwardComposer<Component> {
 		servico.setDisabled(false);
 		orgao.setDisabled(false);
 		requisito.setDisabled(false);
+		idUsuarios.setDisabled(false);
 		Executions.createComponents("peticao.zul", conteudo, null);
 
 	}
@@ -113,6 +152,7 @@ public class IndexController extends GenericForwardComposer<Component> {
 		areas.setDisabled(false);
 		orgao.setDisabled(false);
 		requisito.setDisabled(false);
+		idUsuarios.setDisabled(false);
 		Executions.createComponents("servicos.zul", conteudo, null);
 	}
 	
@@ -134,6 +174,7 @@ public class IndexController extends GenericForwardComposer<Component> {
 		pol.setDisabled(false);
 		areas.setDisabled(false);
 		requisito.setDisabled(false);
+		idUsuarios.setDisabled(false);
 		Executions.createComponents("orgao.zul", conteudo, null);
 	}
 	public void onClick$requisito(Event e){
@@ -154,7 +195,37 @@ public class IndexController extends GenericForwardComposer<Component> {
 		pol.setDisabled(false);
 		areas.setDisabled(false);
 		orgao.setDisabled(false);
+		idUsuarios.setDisabled(false);
 		Executions.createComponents("requisito.zul", conteudo, null);
 		
+	}
+	public void onClick$idUsuarios(Event e){
+		
+        conteudo.getChildren().clear();
+		
+        idUsuarios.setDisabled(true);
+		requisito.setDisabled(false);
+		servico.setDisabled(false);
+		gestaoDePeticao.setDisabled(false);
+		embarcacoes.setDisabled(false);
+		maritimos.setDisabled(false);
+		empresas.setDisabled(false);
+		vistorias.setDisabled(false);
+		pagamentos.setDisabled(false);
+		estatistica.setDisabled(false);
+		infraEstrutura.setDisabled(false);
+		implementacao.setDisabled(false);
+		expaco.setDisabled(false);
+		pol.setDisabled(false);
+		areas.setDisabled(false);
+		orgao.setDisabled(false);
+		
+		Executions.createComponents("usuarioMenu.zul", conteudo, null);
+		
+	}
+	public void onClick$btnSair(Event e){
+		Executions.sendRedirect("usuarioLogin.zul");
+		
+		Executions.getCurrent().getDesktop().getSession().invalidate();
 	}
 }

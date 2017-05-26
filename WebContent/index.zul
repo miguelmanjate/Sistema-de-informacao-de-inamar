@@ -1,44 +1,64 @@
 <?page title="SISTEMA DE INFORMAÇÃO DO INAMAR"?>
-<window title="SISTEMA DE INFORMAÇÃO DO INAMAR" border="normal"
-	apply="mz.com.ciuem.controller.IndexController"
-	 >
+<window apply="mz.com.ciuem.controller.IndexController" border="normal" > 
+	<grid>
+		<rows>
+			<row>
+				<hbox>
+					<label value="Bem Vindo " />
+				</hbox>
+				<div align="right">
+					<label id="lblUsuarioLogado" />
+					<button label="Sair" id="btnSair" />
+				</div>
+			</row>
+		</rows>
+	</grid>
 	<menubar>
 		<menu label="File">
 			<menupopup>
 				<menuitem label="Parametritro"></menuitem>
 				<menuseparator></menuseparator>
-				<menuitem label="Orgao" id = "orgao"></menuitem>
+				<menuitem label="Orgao" id="orgao"></menuitem>
 				<menuseparator></menuseparator>
-				<menuitem label="Areas" id ="areas" ></menuitem>
+				<menuitem label="Areas" id="areas"></menuitem>
 				<menuseparator></menuseparator>
-				<menuitem label="Gestão de Petições" id = "gestaoDePeticao" ></menuitem>
+				<menuitem label="Gestão de Petições"
+					id="gestaoDePeticao">
+				</menuitem>
 				<menuseparator></menuseparator>
-				<menuitem label="Servicos" id = "servico" ></menuitem>
+				<menuitem label="Servicos" id="servico"></menuitem>
 				<menuseparator></menuseparator>
-				<menuitem label="Requisitos" id ="requisito" ></menuitem>
+				<menuitem label="Requisitos" id="requisito"></menuitem>
 				<menuseparator></menuseparator>
-				<menuitem label="Maritimos" id ="maritimos" ></menuitem>
+				<menuitem label="Maritimos" id="maritimos"></menuitem>
 				<menuseparator></menuseparator>
-				<menuitem label="Empresas" id ="empresas" ></menuitem>
+				<menuitem label="Empresas" id="empresas"></menuitem>
 				<menuseparator></menuseparator>
-				<menuitem label="Embarcaçoes" id = "embarcacoes"></menuitem>
+				<menuitem label="Embarcaçoes" id="embarcacoes"></menuitem>
 				<menuseparator></menuseparator>
-				<menuitem label="Vistorias" id ="vistorias"></menuitem>
+				<menuitem label="Vistorias" id="vistorias"></menuitem>
 				<menuseparator></menuseparator>
-				<menuitem label="Pol" id ="pol" ></menuitem>
+				<menuitem label="Pol" id="pol"></menuitem>
 				<menuseparator></menuseparator>
-				<menuitem label="Pagamentos" id ="pagamentos"></menuitem>
+				<menuitem label="Pagamentos" id="pagamentos"></menuitem>
 				<menuseparator></menuseparator>
-				<menuitem label="Estatisticas" id = "estatistica"></menuitem>
+				<menuitem label="Estatisticas" id="estatistica"></menuitem>
 				<menuseparator></menuseparator>
-				<menuitem label="Infra-estrutura" id ="infraEstrutura"></menuitem>
+				<menuitem label="Infra-estrutura" id="infraEstrutura"></menuitem>
 				<menuseparator></menuseparator>
-				<menuitem label="Implementação" id ="implementacao"></menuitem>
+				<menuitem label="Implementação" id="implementacao"></menuitem>
 				<menuseparator></menuseparator>
-				<menuitem label="Expansao" id ="expaco"></menuitem>
+				<menuitem label="Expansao" id="expaco"></menuitem>
+			</menupopup>
+		</menu>
+		<menu label="Settings">
+			<menupopup>
+				<menuitem label="Usuarios" id="idUsuarios" />
+				<menuseparator></menuseparator>
+				<menuitem label="New" />
 			</menupopup>
 		</menu>
 	</menubar>
-	<separator height="20px" ></separator>
-	<div id = "conteudo" ></div>
+	<separator height="20px"></separator>
+	<div id="conteudo" align="center"></div>
 </window>

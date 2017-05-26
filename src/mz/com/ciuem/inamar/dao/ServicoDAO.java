@@ -7,6 +7,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 
+import mz.com.ciuem.model.RequisitoDeTipoPeticao;
 import mz.com.ciuem.model.Servico;
 
 public class ServicoDAO {
@@ -22,7 +23,34 @@ public static void adicionar(Servico servico){
 		
 		manager.close();
 	}
+
+public static Servico getById(long id) {
+	EntityManagerFactory fatory = Persistence.createEntityManagerFactory("inamarDAO");
+	EntityManager manager = fatory.createEntityManager();
 	
+	Servico s = manager.find(Servico.class, id);
+	return s;
+}
+public static void remover(long id){
+	EntityManagerFactory fatory = Persistence.createEntityManagerFactory("inamarDAO");
+	EntityManager manager = fatory.createEntityManager();
+	
+	Servico encotrada = manager.find(Servico.class, id);
+	manager.getTransaction().begin();
+	manager.remove(encotrada);
+	manager.getTransaction().commit();
+	
+}
+public static void atualizar(Servico servico){
+	EntityManagerFactory fatory = Persistence.createEntityManagerFactory("inamarDAO");
+	EntityManager manager = fatory.createEntityManager();
+	
+	manager.getTransaction().begin();
+	manager.merge(servico);
+	manager.getTransaction().commit();
+	manager.close();
+}
+
 	public static List<Servico> listar(){
 		
 		EntityManagerFactory factory = Persistence.createEntityManagerFactory("inamarDAO") ;

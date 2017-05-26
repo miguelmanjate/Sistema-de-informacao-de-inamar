@@ -8,6 +8,7 @@ import javax.persistence.Persistence;
 import javax.persistence.Query;
 
 import mz.com.ciuem.model.Peticao;
+import mz.com.ciuem.model.Servico;
 import mz.com.ciuem.model.TipoDePeticaoServico;
 
 public class TipoDePeticaoServicoDAO {
@@ -23,7 +24,34 @@ public static void adicionar(TipoDePeticaoServico tps){
 		
 		manager.close();
 	}
+
+public static TipoDePeticaoServico getById(long id) {
+	EntityManagerFactory fatory = Persistence.createEntityManagerFactory("inamarDAO");
+	EntityManager manager = fatory.createEntityManager();
 	
+	TipoDePeticaoServico tps = manager.find(TipoDePeticaoServico.class, id);
+	return tps;
+}
+public static void remover(long id){
+	EntityManagerFactory fatory = Persistence.createEntityManagerFactory("inamarDAO");
+	EntityManager manager = fatory.createEntityManager();
+	
+	TipoDePeticaoServico encotrada = manager.find(TipoDePeticaoServico.class, id);
+	manager.getTransaction().begin();
+	manager.remove(encotrada);
+	manager.getTransaction().commit();
+	
+}
+public static void atualizar(TipoDePeticaoServico tps){
+	EntityManagerFactory fatory = Persistence.createEntityManagerFactory("inamarDAO");
+	EntityManager manager = fatory.createEntityManager();
+	
+	manager.getTransaction().begin();
+	manager.merge(tps);
+	manager.getTransaction().commit();
+	manager.close();
+}
+
 	public static List<TipoDePeticaoServico> listar(){
 		
 		EntityManagerFactory factory = Persistence.createEntityManagerFactory("inamarDAO") ;

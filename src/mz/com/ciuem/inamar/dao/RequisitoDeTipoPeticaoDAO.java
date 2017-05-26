@@ -8,6 +8,7 @@ import javax.persistence.Persistence;
 import javax.persistence.Query;
 
 import mz.com.ciuem.model.Peticao;
+import mz.com.ciuem.model.Requisito;
 import mz.com.ciuem.model.RequisitoDeTipoPeticao;
 
 public class RequisitoDeTipoPeticaoDAO {
@@ -31,6 +32,33 @@ public static List<RequisitoDeTipoPeticao> listar(){
 	List<RequisitoDeTipoPeticao> rtp = manager.createQuery("select r from RequisitoDeTipoPeticao as r").getResultList();
 	manager.close();
 	return rtp;	
+}
+
+public static RequisitoDeTipoPeticao getById(long id) {
+	EntityManagerFactory fatory = Persistence.createEntityManagerFactory("inamarDAO");
+	EntityManager manager = fatory.createEntityManager();
+	
+	RequisitoDeTipoPeticao r = manager.find(RequisitoDeTipoPeticao.class, id);
+	return r;
+}
+public static void remover(long id){
+	EntityManagerFactory fatory = Persistence.createEntityManagerFactory("inamarDAO");
+	EntityManager manager = fatory.createEntityManager();
+	
+	RequisitoDeTipoPeticao encotrada = manager.find(RequisitoDeTipoPeticao.class, id);
+	manager.getTransaction().begin();
+	manager.remove(encotrada);
+	manager.getTransaction().commit();
+	
+}
+public static void atualizar(RequisitoDeTipoPeticao requisito){
+	EntityManagerFactory fatory = Persistence.createEntityManagerFactory("inamarDAO");
+	EntityManager manager = fatory.createEntityManager();
+	
+	manager.getTransaction().begin();
+	manager.merge(requisito);
+	manager.getTransaction().commit();
+	manager.close();
 }
 public static List<RequisitoDeTipoPeticao> getBayDescricao(String descricao){
 	 EntityManagerFactory fatory = Persistence.createEntityManagerFactory("inamarDAO");

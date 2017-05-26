@@ -8,6 +8,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 
+import mz.com.ciuem.model.Area;
 import mz.com.ciuem.model.Orgao;
 
 public class OrgaoDAO {
@@ -34,13 +35,32 @@ public class OrgaoDAO {
 		return lista;
 		
 	}
-	public static Orgao getBayId(long l){
+	public static Orgao getBayId(long id){
 		EntityManagerFactory factory = Persistence.createEntityManagerFactory("inamarDAO") ;
 		EntityManager manager = factory. createEntityManager() ;
 		
-		Orgao orgao = manager.find(Orgao.class, l);
+		Orgao orgao = manager.find(Orgao.class, id);
 		return orgao;
 		
+	}
+	public static void remover(long id){
+		EntityManagerFactory fatory = Persistence.createEntityManagerFactory("inamarDAO");
+		EntityManager manager = fatory.createEntityManager();
+		
+		Orgao encotrada = manager.find(Orgao.class, id);
+		manager.getTransaction().begin();
+		manager.remove(encotrada);
+		manager.getTransaction().commit();
+		
+	}
+	public static void atualizar(Orgao orgao){
+		EntityManagerFactory fatory = Persistence.createEntityManagerFactory("inamarDAO");
+		EntityManager manager = fatory.createEntityManager();
+		
+		manager.getTransaction().begin();
+		manager.merge(orgao);
+		manager.getTransaction().commit();
+		manager.close();
 	}
 
 	public static List<Orgao> getBayDescricao(String descricao){

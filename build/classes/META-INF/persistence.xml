@@ -12,6 +12,7 @@
 		<class>mz.com.ciuem.model.Orgao</class>
 		<class>mz.com.ciuem.model.Requisito</class>
 		<class>mz.com.ciuem.model.RequisitoDeTipoPeticao</class>
+		<class>mz.com.ciuem.model.Usuario</class>
 		
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />

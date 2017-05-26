@@ -34,6 +34,32 @@ public class AreaDAO {
 		return lista;
 	}
 
+	public static Area getById(long id){
+		EntityManagerFactory fatory = Persistence.createEntityManagerFactory("inamarDAO");
+		EntityManager manager = fatory.createEntityManager();
+		
+		Area encotrada = manager.find(Area.class, id);
+		return encotrada;
+	}
+	public static void remover(long id){
+		EntityManagerFactory fatory = Persistence.createEntityManagerFactory("inamarDAO");
+		EntityManager manager = fatory.createEntityManager();
+		
+		Area encotrada = manager.find(Area.class, id);
+		manager.getTransaction().begin();
+		manager.remove(encotrada);
+		manager.getTransaction().commit();
+		
+	}
+	public static void atualizar(Area area){
+		EntityManagerFactory fatory = Persistence.createEntityManagerFactory("inamarDAO");
+		EntityManager manager = fatory.createEntityManager();
+		
+		manager.getTransaction().begin();
+		manager.merge(area);
+		manager.getTransaction().commit();
+		manager.close();
+	}
 	public static List<Area> getBayCodigo(String codigo){
 		EntityManagerFactory fatory = Persistence.createEntityManagerFactory("inamarDAO");
 		EntityManager manager = fatory.createEntityManager();

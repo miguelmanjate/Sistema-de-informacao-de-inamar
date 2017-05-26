@@ -22,22 +22,31 @@
 							</radiogroup>
 						</row>
 						<row>
-					    <label value="Servico" />
-							<hbox>
-								<combobox id="cbxServico"></combobox>
-								<button label="Pesquisar" id="btnPesquisar" />
-							</hbox>
-						</row>
-						<row>
-							<hbox></hbox>
 							<hbox>
 								<button label="Cancelar"
 									id="btnCancelar" />
 								<button label="Gravar" id="btnGravar" />
 								<button label="listar" id="btnListar" />
+								<button label="Pesquisar"
+									id="btnPesquisar" />
+							</hbox>
+							<hbox>
+								<label value="Servicos" />
 							</hbox>
 						</row>
-						<row></row>
+						<row>
+							<hbox></hbox>
+							<hbox>
+                                 <listbox id = "lbxServicos" multiple="true" checkmark="true">
+                                 	<listhead>
+                                 		<listheader label="Descricao do Servico"
+                                 			sort="auto" />
+                                 		<listheader label="Estado do Servico"
+                                 			sort="auto" />
+                                 	</listhead>
+                                 </listbox>
+							</hbox>
+						</row>
 						<row></row>
 					</rows>
 				</grid>

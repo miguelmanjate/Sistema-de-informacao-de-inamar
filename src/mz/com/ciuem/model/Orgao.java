@@ -5,6 +5,7 @@ package mz.com.ciuem.model;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -21,7 +22,7 @@ public class Orgao{
 	private String local;
 	private long conta;
 	
-	@OneToMany(mappedBy= "orgao", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy= "orgao", fetch = FetchType.EAGER )
 	List<Area> areas;
 	
 	public List<Area> getAreas() {

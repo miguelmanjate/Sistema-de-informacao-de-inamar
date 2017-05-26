@@ -74,9 +74,13 @@ public class RequisitoDeTipoPeticaoController extends GenericForwardComposer<Com
 
 		lbxRequisitoPeticao.getItems().clear();
 		Requisito r = null;
-		Set<Listitem> items = lbxRequisitos.getSelectedItems();
+		Set<Listitem> items = null;
+		if(!lbxRequisitos.getSelectedItems().isEmpty()){
+		 items = lbxRequisitos.getSelectedItems();
+		}
 		Peticao p = (Peticao) Executions.getCurrent().getDesktop().getSession().getAttribute("peticao");
-		
+
+		if(items != null){
 	for (Listitem item : items) {
 			
 			r = (Requisito) item.getValue();
@@ -107,7 +111,9 @@ public class RequisitoDeTipoPeticaoController extends GenericForwardComposer<Com
 						"center", 2000);
 			}
 		}
-	limpar();
+	      limpar();
+		}
+		
 	}
 
 	public void onClick$btnListar(Event e) {
@@ -166,6 +172,6 @@ public class RequisitoDeTipoPeticaoController extends GenericForwardComposer<Com
 		descricao.setRawValue(null);
 		radioSim.setChecked(false);
 		radioNao.setChecked(false);
-		lbxRequisitos.getSelectedItems().clear();
+		lbxRequisitos.clearSelection();
 	}
 }

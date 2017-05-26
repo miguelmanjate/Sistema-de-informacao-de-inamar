@@ -7,6 +7,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 
+import mz.com.ciuem.model.Peticao;
 import mz.com.ciuem.model.Requisito;
 
 public class RequisitoDAO {
@@ -31,6 +32,32 @@ public class RequisitoDAO {
     	manager.close();
     	return requisitos;
     }
+	public static Requisito getById(long id) {
+		EntityManagerFactory fatory = Persistence.createEntityManagerFactory("inamarDAO");
+		EntityManager manager = fatory.createEntityManager();
+		
+		Requisito r = manager.find(Requisito.class, id);
+		return r;
+	}
+	public static void remover(long id){
+		EntityManagerFactory fatory = Persistence.createEntityManagerFactory("inamarDAO");
+		EntityManager manager = fatory.createEntityManager();
+		
+		Requisito encotrada = manager.find(Requisito.class, id);
+		manager.getTransaction().begin();
+		manager.remove(encotrada);
+		manager.getTransaction().commit();
+		
+	}
+	public static void atualizar(Requisito requisito){
+		EntityManagerFactory fatory = Persistence.createEntityManagerFactory("inamarDAO");
+		EntityManager manager = fatory.createEntityManager();
+		
+		manager.getTransaction().begin();
+		manager.merge(requisito);
+		manager.getTransaction().commit();
+		manager.close();
+	}
     public static List<Requisito> getByDescricao(String descricao){
     	EntityManagerFactory fatory = Persistence.createEntityManagerFactory("inamarDAO");
     	EntityManager manager = fatory.createEntityManager();

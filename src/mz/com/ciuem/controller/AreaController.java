@@ -23,7 +23,7 @@ import mz.com.ciuem.model.Orgao;
 
 public class AreaController extends GenericForwardComposer<Component> {
 
-	private Button btnGravar;
+	private Button btnGravar, btnAtualizar;
 	private Button btnCancelar;
 	private Button btnListar;
 	private Button btnPesquisar;
@@ -83,7 +83,7 @@ public class AreaController extends GenericForwardComposer<Component> {
 
 	public void onClick$btnListar(Event e) {
 		lbxArea.getItems().clear();
-         limpar();
+		limpar();
 		List<Area> areas = AreaDAO.listar();
 		for (Area area : areas) {
 			listar(area);
@@ -99,9 +99,19 @@ public class AreaController extends GenericForwardComposer<Component> {
 		Area area = (Area) lbxArea.getSelectedItem().getValue();
 		lbxArea.getItems().clear();
 		listar(area);
+		//enxibirNaTela(area);
 		Executions.getCurrent().getDesktop().getSession().setAttribute("pedidosArea", area);
 	}
 
+	private void enxibirNaTela(Area area) {
+		codigoArea.setValue(area.getCodigo());
+		descricaoArea.setValue(area.getDescricao());
+		cbxOrgao.setValue(area.getOrgao().getDescricao());
+	}
+
+	public void onClick$btnAtualizar(Event e){
+		Area area = (Area) Executions.getCurrent().getDesktop().getSession().getAttribute("pedidosArea");		
+	}
 	public void onClick$btnPedidosArea(Event e) {
 
 		conteudoArea.getChildren().clear();
@@ -112,19 +122,20 @@ public class AreaController extends GenericForwardComposer<Component> {
 		lbxArea.getItems().clear();
 		conteudoArea.getChildren().clear();
 		List<Area> areas = null;
-    if(!codigoArea.getValue().isEmpty() || !descricaoArea.getValue().isEmpty()){
-    	
-		if (!codigoArea.getValue().isEmpty())
-			areas = AreaDAO.getBayCodigo(codigoArea.getValue());
-		else if(!descricaoArea.getValue().isEmpty())
-			areas = AreaDAO.getBayDescricao(descricaoArea.getValue());
+		if (!codigoArea.getValue().isEmpty() || !descricaoArea.getValue().isEmpty()) {
 
-		for (Area a : areas) {
-			listar(a);
+			if (!codigoArea.getValue().isEmpty())
+				areas = AreaDAO.getBayCodigo(codigoArea.getValue());
+			else if (!descricaoArea.getValue().isEmpty())
+				areas = AreaDAO.getBayDescricao(descricaoArea.getValue());
+
+			for (Area a : areas) {
+				listar(a);
+			}
+		} else {
+			Clients.showNotification("Introdusa uma informacao para a pesquisa ", "error", btnPesquisar, "center",
+					2000);
 		}
-    }else{
-    	Clients.showNotification("Introdusa uma informacao para a pesquisa ", "error", btnPesquisar, "center", 2000);
-    }
 	}
 
 	private void listar(Area area) {

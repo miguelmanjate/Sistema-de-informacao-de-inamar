@@ -152,11 +152,11 @@ public class PeticaoControler extends GenericForwardComposer<Component> {
 
 	public void onClick$btnListarServico(Event e) {
 		conteudoDePeticao.getChildren().clear();
-		Executions.createComponents("formularioPedidoServicos.zul", conteudoDePeticao, null);
+		Executions.createComponents("/WEB-INF/forms/formularioPedidoServicos.zul", conteudoDePeticao, null);
 	}
 	public void onClick$btnListarRequisito(Event e){
 		conteudoDePeticao.getChildren().clear();
-		Executions.createComponents("formularioPeticaoRequisito.zul", conteudoDePeticao, null);
+		Executions.createComponents("/WEB-INF/forms/formularioPeticaoRequisito.zul", conteudoDePeticao, null);
 	}
 	private Area onSelect$cbxPeticao(Event e) {
 		if (cbxPeticao.getSelectedItem() != null)
@@ -178,7 +178,7 @@ public class PeticaoControler extends GenericForwardComposer<Component> {
 		}
 		if (p != null) {
 			listar(p);
-			Executions.createComponents("menuConfiguracao.zul", conteudoDePeticao, null);
+			Executions.createComponents("/WEB-INF/forms/menuConfiguracao.zul", conteudoDePeticao, null);
 			Executions.getCurrent().getDesktop().getSession().setAttribute("peticao", p);
 		} else {
 			Clients.showNotification("Selecione uma peticao ", "error", btnGravar, "center", 2000);

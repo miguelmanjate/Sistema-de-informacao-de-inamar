@@ -59,7 +59,7 @@ public class UsuarioCadastro extends GenericForwardComposer<Component> {
 	public void onClick$btnVoltar(Event e){
 		conteudo.getChildren().clear();
 		
-		Executions.createComponents("usuarioMenu.zul", conteudo, null);
+		Executions.createComponents("/WEB-INF/forms/usuarioMenu.zul", conteudo, null);
 	}
 	public void limpar(){
 		txtNome.setRawValue(null);

@@ -115,7 +115,7 @@ public class AreaController extends GenericForwardComposer<Component> {
 	public void onClick$btnPedidosArea(Event e) {
 
 		conteudoArea.getChildren().clear();
-		Executions.createComponents("formularioAreaPedidos.zul", conteudoArea, null);
+		Executions.createComponents("/WEB-INF/forms/formularioAreaPedidos.zul", conteudoArea, null);
 	}
 
 	public void onClick$btnPesquisar(Event e) {

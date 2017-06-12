@@ -48,7 +48,7 @@ public class UsuarioMenuController extends GenericForwardComposer<Component> {
 
 	public void onClick$btnNovoUser(Event e) {
 		conteudo.getChildren().clear();
-		Executions.createComponents("usuarioCadastro.zul", conteudo, null);
+		Executions.createComponents("/WEB-INF/forms/usuarioCadastro.zul", conteudo, null);
 	}
 
 	private void listar(Usuario usuario) {

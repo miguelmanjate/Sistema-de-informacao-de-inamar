@@ -12,6 +12,7 @@ import org.zkoss.zk.ui.util.Clients;
 import org.zkoss.zk.ui.util.GenericForwardComposer;
 import org.zkoss.zul.Button;
 import org.zkoss.zul.Textbox;
+import org.zkoss.zul.Window;
 
 import mz.com.ciuem.inamar.dao.UsuarioDAO;
 import mz.com.ciuem.model.Usuario;
@@ -21,6 +22,8 @@ public class UsuarioLoginController extends GenericForwardComposer<Component> {
 	private Textbox txtLogin;
 	private Textbox txtSenha;
 	private Button btnLogin;
+	
+	private Window usuarioLogin;
 
 	public void doAfterComposer(Component comp) throws Exception {
 		super.doAfterCompose(comp);
@@ -36,8 +39,9 @@ public class UsuarioLoginController extends GenericForwardComposer<Component> {
 		}
 		if (usuario != null) {
 		Executions.getCurrent().getDesktop().getSession().setAttribute("usuarioLogado", usuario);	
-		Executions.sendRedirect("/index.zul");	
-		
+		Executions.createComponents("/WEB-INF/forms/index.zul", null, null);
+		//Executions.sendRedirect("/index.zul");	
+		usuarioLogin.detach();
 		} else {
 			Clients.showNotification("O Login ou senha incorreta!!", "error", btnLogin, "center", 2000);
 			limpar();

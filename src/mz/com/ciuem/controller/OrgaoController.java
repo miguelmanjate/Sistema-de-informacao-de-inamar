@@ -140,7 +140,7 @@ public class OrgaoController extends GenericForwardComposer<Component> {
 	public void onClick$btnListarAreasOrgao(Event e) {
 		// btnListarAreasOrgao.setVisible(false);
 		conteudoOrgao.getChildren().clear();
-		Executions.createComponents("formularioOrgaoAreas.zul", conteudoOrgao, null);
+		Executions.createComponents("/WEB-INF/forms/formularioOrgaoAreas.zul", conteudoOrgao, null);
 
 	}
 

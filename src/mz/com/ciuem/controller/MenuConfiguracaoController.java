@@ -28,14 +28,14 @@ public class MenuConfiguracaoController extends GenericForwardComposer<Component
 		conteudoMenuConfiguracao.getChildren().clear();
 		 peticao = (Peticao) Executions.getCurrent().getDesktop().getSession().getAttribute("peticao");
 			txbPedidoConf.setValue(peticao.getDescricao());
-		Executions.createComponents("tipoDePeticaoServico.zul", conteudoMenuConfiguracao, null);
+		Executions.createComponents("/WEB-INF/forms/tipoDePeticaoServico.zul", conteudoMenuConfiguracao, null);
 		btnRequisitos.setDisabled(true);
 	}
 	public void onClick$btnRequisitos(Event e){
 		conteudoMenuConfiguracao.getChildren().clear();
 		peticao = (Peticao) Executions.getCurrent().getDesktop().getSession().getAttribute("peticao");
 		txbPedidoConf.setValue(peticao.getDescricao());
-		Executions.createComponents("RequisitosDeTipoPeticao.zul", conteudoMenuConfiguracao, null);
+		Executions.createComponents("/WEB-INF/forms/RequisitosDeTipoPeticao.zul", conteudoMenuConfiguracao, null);
 		btnServicos.setDisabled(true);
 	}
 }

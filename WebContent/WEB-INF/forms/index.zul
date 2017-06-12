@@ -1,0 +1,40 @@
+<?page title="SISTEMA DE INFORMAÇÃO DO INAMAR"?>
+<window  border="normal" apply="mz.com.ciuem.controller.IndexController" > 
+	<grid>
+		<rows>
+			<row>
+				<hbox>
+					<label value="Bem Vindo " />
+				</hbox>
+				<div align="right">
+					<label id="lblUsuarioLogado" />
+					<button label="Sair" id="btnSair" />
+				</div>
+			</row>
+		</rows>
+	</grid>
+	<menubar>
+		<menu label="File">
+			<menupopup>
+				<menuitem label="Orgao" id="orgao"></menuitem>
+				<menuseparator id="orgaoArea" ></menuseparator>
+				<menuitem label="Areas" id="areas"></menuitem>
+				<menuseparator id="areaPeticao" ></menuseparator>
+				<menuitem label="Gestão de Petições" id="gestaoDePeticao"></menuitem>
+				<menuseparator id="peticaoServico"></menuseparator>
+				<menuitem label="Servicos" id="servico"></menuitem>
+				<menuseparator id="servicoRequisito" ></menuseparator>
+				<menuitem label="Requisitos" id="requisito"></menuitem>
+			</menupopup>
+		</menu>
+		<menu label="Settings" id="settings">
+			<menupopup>
+				<menuitem label="Usuarios" id="idUsuarios" />
+				<menuseparator></menuseparator>
+				<menuitem label="New" />
+			</menupopup>
+		</menu>
+	</menubar>
+	<separator height="20px"></separator>
+	<div id="conteudo" align="center"></div>
+</window>

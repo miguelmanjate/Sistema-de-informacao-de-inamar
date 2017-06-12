@@ -36,6 +36,11 @@
 		<servlet-name>auEngine</servlet-name>
 		<url-pattern>/zkau/*</url-pattern>
 	</servlet-mapping>
+	
+	<session-config>
+	<session-timeout>3</session-timeout>
+	</session-config>
+	
 	<welcome-file-list>
 		
 		<welcome-file>usuarioLogin.zul</welcome-file>
